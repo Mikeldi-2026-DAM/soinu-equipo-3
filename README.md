@@ -6,4 +6,4 @@
 
 ## Javier
 - Se me da bien: tener pacienza y minimizar los problemas
-- Me da respeto: las consecuencias
+- Me da respeto: las consecuencias 
