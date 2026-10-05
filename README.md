@@ -1,5 +1,13 @@
 # soinu-equipo-3
 
-LUIS
-- Qué se me da bien: trabajo en equipo, adaptación a nuevas herrramientas, resolución de problemas.
-- Qué me da respeto de este curso: el poco tiempo que tenemos.
+## Deiner
+- Se me da bien: programar.
+- Me da respeto de este curso: aprender a usar Git.
+
+## Adan
+- Se me da bien: trabajar en equipo.
+- Me da respeto: GitHub.
+
+## Luis
+- Se me da bien: trabajo en equipo, adaptación a nuevas herrramientas, resolución de problemas.
+- Me da respeto: el poco tiempo que tenemos.
