@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}{{ entrada.nombre }}{% endblock %}
+{% block contenido %}
+<p><a href="/">← Volver a las entradas</a></p>
+<h1>{{ entrada.nombre }}</h1>
+<p>{{ entrada.detalle }}</p>
+<p class="precio">{{ "%.2f"|format(entrada.precio) }} € <small class="plazas">por entrada</small></p>
+
+{% if entrada.plazas_libres == 0 %}
+  <p class="etiqueta-agotada">Agotada</p>
+  <button class="boton" disabled>Comprar</button>
+{% else %}
+  <p class="plazas">Quedan {{ entrada.plazas_libres }} de {{ entrada.plazas_totales }} ·
+     máximo {{ entrada.max_por_compra }} por compra</p>
+
+  <h2>Comprar</h2>
+  {% if error %}
+    <p class="aviso-error">{{ error }}</p>
+  {% endif %}
+
+  <form class="compra" method="post" action="/entradas/{{ entrada.id }}/comprar">
+    <label>Cantidad
+      <input type="number" name="cantidad" min="1"
+             max="{{ [entrada.max_por_compra, entrada.plazas_libres]|min }}"
+             value="{{ valores.cantidad or 1 }}" required>
+    </label>
+    <label>Nombre y apellidos
+      <input type="text" name="nombre" maxlength="60" value="{{ valores.nombre or '' }}" required>
+    </label>
+    <label>Correo electrónico
+      <input type="email" name="correo" maxlength="100" value="{{ valores.correo or '' }}" required>
+    </label>
+    <button class="boton" type="submit">Comprar</button>
+  </form>
+{% endif %}
+{% endblock %}

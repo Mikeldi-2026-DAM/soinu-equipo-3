@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Entradas{% endblock %}
+{% block contenido %}
+<h1>Entradas</h1>
+<p>Elige tu entrada para el festival.</p>
+
+<div class="rejilla">
+  {% for e in entradas %}
+  <article class="tarjeta {% if e.plazas_libres == 0 %}agotada{% endif %}">
+    <h2>{{ e.nombre }}</h2>
+    <p>{{ e.descripcion }}</p>
+    <div class="precio">{{ "%.2f"|format(e.precio) }} €</div>
+    {% if e.plazas_libres == 0 %}
+      <span class="etiqueta-agotada">Agotada</span>
+    {% else %}
+      <span class="plazas">Quedan {{ e.plazas_libres }} de {{ e.plazas_totales }}</span>
+      <a class="boton" href="/entradas/{{ e.id }}">Comprar</a>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
