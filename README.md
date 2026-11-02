@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SOINU · Web de venta de entradas
 
 Proyecto semanal de 2.º DAM. Parte del muro de clase (FastAPI + Jinja2, bloque 4) y lo convierte en la web donde se compran las entradas del festival SOINU. Los datos están en memoria, así que se pierden al reiniciar el servidor.
@@ -87,22 +86,21 @@ Ejemplo de cuerpo para `POST /api/compras`:
 - [x] Anular una compra devolviendo las plazas.
 - [x] Código único por compra que se ve en la confirmación.
 - [x] Aspecto propio: cabecera de SOINU, colores en variables CSS y tarjetas.
-=======
-# soinu-equipo-3
 
-## Deiner
+## Equipo 3
+
+### Deiner
 - Se me da bien: programar.
 - Me da respeto de este curso: aprender a usar Git.
 
-## Adan
+### Adan
 - Se me da bien: trabajar en equipo.
 - Me da respeto: GitHub.
 
-## Javier
+### Javier
 - Se me da bien: tener pacienza y minimizar los problemas
 - Me da respeto: las consecuencias 
 
-## Luis
+### Luis
 - Se me da bien: trabajo en equipo, adaptación a nuevas herrramientas, resolución de problemas.
 - Me da respeto: el poco tiempo que tenemos.
->>>>>>> 9678cf3c68b2afeb20f36e3fda2484fa94489f88
