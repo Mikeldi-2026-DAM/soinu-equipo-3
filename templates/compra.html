@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titulo %}Compra {{ compra.codigo }}{% endblock %}
+{% block contenido %}
+{% if compra.anulada %}
+  <p class="aviso-error">Esta compra está anulada. Las plazas se han devuelto.</p>
+{% else %}
+  <p class="aviso-ok">¡Compra confirmada! Guarda este código.</p>
+{% endif %}
+
+<h1>Compra n.º {{ compra.id }}</h1>
+<p>Código: <span class="codigo">{{ compra.codigo }}</span></p>
+
+<table>
+  <tr><th>Entrada</th><td>{{ compra.entrada_nombre }}</td></tr>
+  <tr><th>Cantidad</th><td>{{ compra.cantidad }}</td></tr>
+  <tr><th>Precio por entrada</th><td>{{ "%.2f"|format(compra.precio_unidad) }} €</td></tr>
+  <tr><th>Total</th><td><strong>{{ "%.2f"|format(compra.total) }} €</strong></td></tr>
+  <tr><th>Comprador</th><td>{{ compra.nombre }}</td></tr>
+  <tr><th>Correo</th><td>{{ compra.correo }}</td></tr>
+  <tr><th>Fecha</th><td>{{ compra.fecha }}</td></tr>
+</table>
+
+<p style="margin-top:1.5rem; display:flex; gap:.8rem; flex-wrap:wrap;">
+  <a class="boton secundario" href="/">Volver a las entradas</a>
+  {% if not compra.anulada %}
+  <form method="post" action="/compra/{{ compra.id }}/anular">
+    <button class="boton" type="submit">Anular compra</button>
+  </form>
+  {% endif %}
+</p>
+{% endblock %}

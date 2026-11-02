@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}Compras{% endblock %}
+{% block contenido %}
+<h1>Compras (organizador)</h1>
+<p class="plazas">{{ total_compras }} compras · recaudado {{ "%.2f"|format(recaudado) }} € (sin contar anuladas)</p>
+
+<form method="get" action="/compras" style="display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+  <input type="search" name="correo" placeholder="Buscar por correo" value="{{ correo }}">
+  <button class="boton" type="submit">Buscar</button>
+  {% if correo %}<a class="boton secundario" href="/compras">Quitar filtro</a>{% endif %}
+</form>
+
+{% if compras %}
+<div style="overflow-x:auto;">
+<table>
+  <tr><th>N.º</th><th>Código</th><th>Entrada</th><th>Cant.</th><th>Total</th><th>Comprador</th><th>Correo</th><th>Fecha</th><th>Estado</th></tr>
+  {% for c in compras %}
+  <tr>
+    <td><a href="/compra/{{ c.id }}">{{ c.id }}</a></td>
+    <td>{{ c.codigo }}</td>
+    <td>{{ c.entrada_nombre }}</td>
+    <td>{{ c.cantidad }}</td>
+    <td>{{ "%.2f"|format(c.total) }} €</td>
+    <td>{{ c.nombre }}</td>
+    <td>{{ c.correo }}</td>
+    <td>{{ c.fecha }}</td>
+    <td>{% if c.anulada %}Anulada{% else %}Válida{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% else %}
+<p>No hay compras{% if correo %} con ese correo{% endif %}.</p>
+{% endif %}
+{% endblock %}
